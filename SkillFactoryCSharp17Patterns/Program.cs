@@ -6,37 +6,43 @@ namespace SkillFactoryCSharp17Patterns
     {
         static void Main(string[] args)
         {
-
+            Average(1);
+            Average(2);
+            Average(3);
+            Console.ReadKey();
         }
 
-        public string GetDayOfWeek2(int day)
+        /// <summary>
+        /// Prints average temperature
+        /// </summary>
+        /// <param name="period">1 for daily, 2 for weekly, 3 for monthly</param>
+        private static void Average(byte period)
         {
-            switch (day)
+            string periodStr = String.Empty;
+            string celsium = String.Empty;
+            switch (period)
             {
-                case 1:
-                    return "Monday";
                 case 2:
-                    return "Tuesday";
+                    periodStr = "weekly";
+                    celsium = (new Random().Next(10, 35)).ToString();
+                    break;
                 case 3:
-                    return "Wednesday";
-                case 4:
-                    return "Thursday";
-                case 5:
-                    return "Friday";
-                case 6:
-                    return "Saturday";
-                case 7:
-                    return "Sunday";
+                    periodStr = "monthly";
+                    celsium = (new Random().Next(10, 40)).ToString();
+                    break;
                 default:
-                    throw new ArgumentOutOfRangeException("Неизвестный индекс дня недели. Введите число в диапазоне 1 - 7");
+                    periodStr = "daily";
+                    celsium = (new Random().Next(10, 30)).ToString();
+                    break;
+
+
             }
+            Console.WriteLine("Welcome to the {0} forecast page", periodStr);
+            Console.WriteLine("The average temperature expects to be around {0} C\n", celsium);
+
         }
+
     }
-
-
-    
-
-   
 }
 
 
